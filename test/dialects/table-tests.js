@@ -454,6 +454,10 @@ Harness.test({
     text  : 'SELECT `user`.`name` AS `quote"quote"tick``tick``` FROM `user`',
     string: 'SELECT `user`.`name` AS `quote"quote"tick``tick``` FROM `user`'
   },
+  sqlserver: {
+    text  : 'SELECT [user].[name] AS [quote"quote"tick`tick`] FROM [user]',
+    string: 'SELECT [user].[name] AS [quote"quote"tick`tick`] FROM [user]'
+  },
   params: []
 });
 
@@ -470,6 +474,10 @@ Harness.test({
   mysql: {
     text  : 'SELECT `user`.* FROM `user` WHERE (`user`.`id` IN (SELECT `user`.`id` FROM `user`))',
     string: 'SELECT `user`.* FROM `user` WHERE (`user`.`id` IN (SELECT `user`.`id` FROM `user`))'
+  },
+  sqlserver: {
+    text  : 'SELECT [user].* FROM [user] WHERE ([user].[id] IN (SELECT [user].[id] FROM [user]))',
+    string: 'SELECT [user].* FROM [user] WHERE ([user].[id] IN (SELECT [user].[id] FROM [user]))'
   },
   params: []
 });
