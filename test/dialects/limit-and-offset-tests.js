@@ -20,6 +20,10 @@ Harness.test({
     text  : 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` LIMIT 1',
     string: 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` LIMIT 1'
   },
+  sqlserver: {
+    text  : 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num BETWEEN 1 AND 1',
+    string: 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num BETWEEN 1 AND 1'
+  },
   params: []
 });
 
@@ -37,6 +41,10 @@ Harness.test({
     text  : 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` LIMIT 3 OFFSET 6',
     string: 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` LIMIT 3 OFFSET 6'
   },
+  sqlserver: {
+    text  : 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num BETWEEN 7 AND 9',
+    string: 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num BETWEEN 7 AND 9'
+  },
   params: []
 });
 
@@ -53,6 +61,10 @@ Harness.test({
   mysql: {
     text  : 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` OFFSET 10',
     string: 'SELECT `user`.* FROM `user` ORDER BY `user`.`name` OFFSET 10'
+  },
+  sqlserver: {
+    text  : 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num >= 11',
+    string: 'SELECT _t.* FROM (SELECT [user].*, ROW_NUMBER() OVER ((ORDER BY (SELECT 0))) as _row_num FROM [user] ORDER BY [user].[name]) as _t WHERE _row_num >= 11'
   },
   params: []
 });
