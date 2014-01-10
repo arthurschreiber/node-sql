@@ -437,6 +437,10 @@ Harness.test({
     text  : 'SELECT name FROM user WHERE ((`user`.`name` = ?) AND (`user`.`id` = ?))',
     string: 'SELECT name FROM user WHERE ((`user`.`name` = \'brian\') AND (`user`.`id` = 1))'
   },
+  sqlserver: {
+    text  : 'SELECT name FROM user WHERE (([user].[name] = @0) AND ([user].[id] = @1))',
+    string: 'SELECT name FROM user WHERE (([user].[name] = \'brian\') AND ([user].[id] = 1))'
+  },
   params: ['brian', 1]
 });
 
